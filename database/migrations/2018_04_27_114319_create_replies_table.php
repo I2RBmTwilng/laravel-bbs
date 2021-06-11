@@ -17,7 +17,7 @@ class CreateRepliesTable extends Migration
             $table->increments('id')->comment('主键自增Id');
             $table->integer('topic_id')->unsigned()->default(0)->index()->comment('回复的话题Id');
             $table->integer('user_id')->unsigned()->default(0)->index()->comment('发起该话题的用户');
-            $table->text('body')->comment('回复的内容');
+            $table->text('content')->comment('回复的内容');
             $table->timestamps();
         });
     }
