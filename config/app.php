@@ -151,7 +151,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Laracasts\Flash\FlashServiceProvider::class, // 信息缓存
+        Naux\Mail\SendCloudServiceProvider::class,// 发送邮件的驱动
         /*
          * Application Service Providers...
          */

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Mailer\UserMailer;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
@@ -30,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'introduction', 'avatar',
+        'name', 'email', 'password', 'introduction', 'avatar', 'confirmation_token',
     ];
 
     /**
@@ -41,4 +42,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * 发送邮件
+     *
+     * @param string $token
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        (new UserMailer())->passwordReset($this->email, $token);
+    }
 }

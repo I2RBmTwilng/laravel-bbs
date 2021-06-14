@@ -25,6 +25,8 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
         'introduction' => $faker->sentence(),
         'created_at' => $now,
+        'is_active' => 1,
+        'confirmation_token' => '',
         'updated_at' => $now,
     ];
 });
